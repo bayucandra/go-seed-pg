@@ -1,6 +1,6 @@
 # Getting started guide
 
-##Go-seed-pg
+## Go-seed-pg
 
 **Go-seed-pg** is database table seeding for PostgreSQL. It is mainly using CSV file as data source.
 
