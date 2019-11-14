@@ -3,9 +3,9 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/bayucandra/go-seed/db"
-	file_operations "github.com/bayucandra/go-seed/file-operations"
-	sql_operations "github.com/bayucandra/go-seed/seed-operations"
+	"github.com/bayucandra/go-seed-pg/db"
+	file_operations "github.com/bayucandra/go-seed-pg/file-operations"
+	sql_operations "github.com/bayucandra/go-seed-pg/seed-operations"
 	"github.com/joho/godotenv"
 	"log"
 	"os"

@@ -6,7 +6,7 @@ import (
 	"encoding/csv"
 	"errors"
 	"fmt"
-	"github.com/bayucandra/go-seed/db"
+	"github.com/bayucandra/go-seed-pg/db"
 	"log"
 	"os"
 	"regexp"
