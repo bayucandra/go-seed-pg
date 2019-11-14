@@ -16,4 +16,13 @@ Following is steps to seed the database:
     - 001.001_table_user_group.csv
     - 002.001_table_user_permission.csv
     - 003.001_table_user.csv
-- Exported CSV must still contain fields/columns name at first row
+- CSV data rules:
+    - Exported CSV must still contain fields/columns name at first row
+    - Null values must be exported as `null` not in quote or empty quote
+    
+CSV Example:
+
+```
+"uid","email","""password""","name","role_id","group_id","is_active","is_approved","created_at"
+"1","admin@example.com","","BOT",null,null,"true","true","2019-07-30 19:00:15"
+```
