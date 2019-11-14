@@ -1,5 +1,11 @@
 # Getting started guide
 
+##Go-seed-pg
+
+**Go-seed-pg** is database table seeding for PostgreSQL. It is mainly using CSV file as data source.
+
+Following is steps to seed the database:
+
 - Copy and rename template **.env.example** to **.env**
 - Adjust **.env** accordingly
 - `SOURCE_DATA` inside **.env** is path of your data seed which contain CSV exported data from PostgreSQL table
