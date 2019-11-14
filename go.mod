@@ -1,4 +1,4 @@
-module github.com/bayucandra/go-seed
+module github.com/bayucandra/go-seed-postgres
 
 go 1.13
 
