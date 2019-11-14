@@ -3,12 +3,18 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/bayucandra/go-seed/db"
+	file_operations "github.com/bayucandra/go-seed/file-operations"
+	sql_operations "github.com/bayucandra/go-seed/seed-operations"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
 )
 
 func main() {
+
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
 	err := loadEnv(".env")
 
 	if err != nil {
@@ -20,6 +26,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	db.Init()
+	files, err := file_operations.DirParse(os.Getenv("SOURCE_PATH"))
+	sql_operations.SeedAll(files)
+
+	_ = db.DBConn.Close()
 
 }
 

@@ -8,6 +8,7 @@ _dev/
 id_rsa
 /tmp
 /out-tsc
+/seed-data
 # Only exists if Bazel was run
 /bazel-out
 
