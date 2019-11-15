@@ -92,7 +92,7 @@ func sqlInsert( cols []string, record []string, table string ) (err error){
 	}
 
 	qry := fmt.Sprintf(
-		`INSERT INTO "%s"."%s" %s VALUES %s`, os.Getenv("PG_SCHEMA"),
+		`INSERT INTO "%s"."%s" %s VALUES %s`, os.Getenv("GO_SEED_PG_SCHEMA"),
 		table, colsStr, valStr)
 
 	res, err := db.DBConn.Exec( qry )

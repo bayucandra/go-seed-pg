@@ -22,12 +22,12 @@ func Init() {
 
 func connect() (db *sql.DB, err error) {
 	var (
-		host     = os.Getenv("PG_HOST")
-		port     = os.Getenv("PG_PORT")
-		user     = os.Getenv("PG_USER")
-		password = os.Getenv("PG_PASSWORD")
-		dbname   = os.Getenv("PG_DBNAME")
-		sslmode  = os.Getenv("PG_SSLMODE")
+		host     = os.Getenv("GO_SEED_PG_HOST")
+		port     = os.Getenv("GO_SEED_PG_PORT")
+		user     = os.Getenv("GO_SEED_PG_USER")
+		password = os.Getenv("GO_SEED_PG_PASSWORD")
+		dbname   = os.Getenv("GO_SEED_PG_DBNAME")
+		sslmode  = os.Getenv("GO_SEED_PG_SSLMODE")
 	)
 
 	if host == "docker-host" && os.Getenv("GO_ENV") == "development" {

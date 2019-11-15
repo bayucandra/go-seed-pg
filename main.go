@@ -43,12 +43,12 @@ func loadEnv(fileName string) error {
 func checkEnv(envNames ...string) (notfound string, err error) {
 
 	envVars := []string{
-		"PG_HOST",
-		"PG_PORT",
-		"PG_USER",
-		"PG_PASSWORD",
-		"PG_DBNAME",
-		"PG_SSLMODE",
+		"GO_SEED_PG_HOST",
+		"GO_SEED_PG_PORT",
+		"GO_SEED_PG_USER",
+		"GO_SEED_PG_PASSWORD",
+		"GO_SEED_PG_DBNAME",
+		"GO_SEED_PG_SSLMODE",
 	}
 
 	if len(envNames) > 0 {
