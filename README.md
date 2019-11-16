@@ -6,8 +6,14 @@
 
 Following is steps to seed the database:
 
-- Copy and rename template **.env.example** to **.env**
-- Adjust **.env** accordingly
+- Configuration setting
+    
+    Mainly, configuration is passed trough Environment variables. There are 2 option regarding this matter:
+    
+    1. By **.env** file. You can copy and rename template **.env.example** to **.env**. Or by **.env-custom** then pass it by : `go-seed-pg .env-custom`
+    2. Directly configure Environment variables in your OS ( helpful for CI/CD things ). If you using linux or OSX, should be something like `export VAR_NAME=value`. Please check list of variables need to sets at .env-example
+    
+- Adjust **.env** or **environment variables** ( depend on **Configuration setting** you choose) accordingly
 - `SOURCE_DATA` inside **.env** is path of your data seed which contain CSV exported data from PostgreSQL table
 - So, create a directory based on your `SOURCE_DATA` variable
 - Sort the table based on relationship dependencies

@@ -13,14 +13,20 @@ import (
 
 func main() {
 
-	if ( os.Getenv("GO_ENV") == "development" ) {
+	if os.Getenv("GO_ENV") == "development" || os.Getenv("GO_ENV") == "test" {
 		log.SetFlags(log.LstdFlags | log.Lshortfile)
 	}
 
-	err := loadEnv(".env")
+	envFile := ".env"
+
+	if len(os.Args) > 1 {
+		envFile = os.Args[1]
+	}
+
+	err := loadEnv( envFile)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println("Not loading .env var")
 	}
 
 	_, err = checkEnv()
