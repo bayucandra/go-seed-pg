@@ -15,17 +15,19 @@ import (
 
 func SeedAll( filePaths []string ) {
 	for _, val := range filePaths {
-		_ = csvParse(val)
+		r := regexp.MustCompile(`.*/(.*)`)
+		fileName := r.FindStringSubmatch(val)[1]
+
+		r = regexp.MustCompile(`^\d{0,3}\.\d{0,3}_(.*)\.((?i)csv)`)
+		tableName := r.FindStringSubmatch(fileName)[1]
+
+		log.Println("\n\n\n===== Seeding Table:", tableName, "=========")
+
+		_ = csvParse(val, tableName)
 	}
 }
 
-func csvParse( filePath string ) (err error) {
-
-	r := regexp.MustCompile(`.*/(.*)`)
-	fileName := r.FindStringSubmatch(filePath)[1]
-
-	r = regexp.MustCompile(`^\d{0,3}\.\d{0,3}_(.*)\.[a-z A-Z]{0,}`)
-	tableName := r.FindStringSubmatch(fileName)[1]
+func csvParse( filePath string, tableName string ) (err error) {
 
 	f, err := os.OpenFile(filePath, os.O_RDONLY, os.ModePerm)
 	if err != nil {
@@ -90,20 +92,21 @@ func sqlInsert( cols []string, record []string, table string ) (err error){
 			valStr += fmt.Sprintf("%v )", val)
 		}
 	}
-
 	qry := fmt.Sprintf(
 		`INSERT INTO "%s"."%s" %s VALUES %s`, os.Getenv("GO_SEED_PG_SCHEMA"),
 		table, colsStr, valStr)
 
+	log.Println("Executing Query: ", qry)
+
 	res, err := db.DBConn.Exec( qry )
 
 	if res == nil {
-		return errors.New(fmt.Sprintf("not inserted correctly, result is nil: %v", err))
+		return errors.New(fmt.Sprintf("\n\n\nnot inserted correctly, result is nil: %v", err))
 	}
 
 	rowInserted, _ := res.RowsAffected()
 	if rowInserted != 1 {
-		err = errors.New("not inserted correctly, affected rows is not 1")
+		err = errors.New("\n\n\nnot inserted correctly, affected rows is not 1")
 	}
 
 	return

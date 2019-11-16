@@ -13,7 +13,9 @@ import (
 
 func main() {
 
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	if ( os.Getenv("GO_ENV") == "development" ) {
+		log.SetFlags(log.LstdFlags | log.Lshortfile)
+	}
 
 	err := loadEnv(".env")
 
@@ -27,8 +29,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	log.Println(os.Getenv("GO_SEED_SOURCE_PATH"))
+
 	db.Init()
-	files, err := file_operations.DirParse(os.Getenv("SOURCE_PATH"))
+	files, err := file_operations.DirParse(os.Getenv("GO_SEED_SOURCE_PATH"))
 	sql_operations.SeedAll(files)
 
 	_ = db.DBConn.Close()
