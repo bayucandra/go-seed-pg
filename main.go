@@ -35,8 +35,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println(os.Getenv("GO_SEED_SOURCE_PATH"))
-
 	db.Init()
 	files, err := file_operations.DirParse(os.Getenv("GO_SEED_SOURCE_PATH"))
 	sql_operations.SeedAll(files)
