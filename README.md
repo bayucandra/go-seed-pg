@@ -1,9 +1,21 @@
-# Getting started guide
+# Go-seed-pg
 
-## Go-seed-pg
+## About
 
 **Go-seed-pg** is database table seeding for PostgreSQL. It is mainly using CSV file as data source.
 
+## Installation
+
+- For non-golang user:
+    - Download binary from Relase page: <https://github.com/bayucandra/go-seed-pg/releases>
+    - Linux/MacOs User: extract and copy **go-seed-pg** to your executable path ($PATH). eg. /usr/local/bin
+    - Windows user: extract and copy **go-seed-pg.exe** to your executable path. eg. C:\Windows or C:\Windows\system32
+
+- For Golang user:
+
+    Just simply run from your command terminal: `go get github.com/bayucandra/go-seed-pg` or `go install  github.com/bayucandra/go-seed-pg`
+
+## Usage
 Following is steps to seed the database:
 
 - Configuration setting
@@ -32,3 +44,7 @@ CSV Example:
 "uid","email","""password""","name","role_id","group_id","is_active","is_approved","created_at"
 "1","admin@example.com","","BOT",null,null,"true","true","2019-07-30 19:00:15"
 ```
+
+- Then, just run it on command line
+    - On Linux/Mac ( Shell / terminal ) : `go-seed-pg`
+    - On Windows ( CMD ): `go-seed-pg.exe`
