@@ -50,5 +50,7 @@ func connect() (db *sql.DB, err error) {
 	if err != nil {
 		return
 	}
+
+	log.Println("Connected to:", connStr)
 	return
 }
