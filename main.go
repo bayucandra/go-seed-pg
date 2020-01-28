@@ -58,6 +58,7 @@ func checkEnv(envNames ...string) (notfound string, err error) {
 		"GO_SEED_PG_DBNAME",
 		"GO_SEED_PG_SCHEMA",
 		"GO_SEED_PG_SSLMODE",
+		"GO_SEED_SOURCE_PATH",
 	}
 
 	if len(envNames) > 0 {
