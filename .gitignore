@@ -1,5 +1,6 @@
 .env
 _dev/
+/go-seed-pg
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
